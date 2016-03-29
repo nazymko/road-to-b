@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -33,7 +34,7 @@ import org.nazymko.road_to_b.dao.tables.records.DriverPropsRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DriverProps extends TableImpl<DriverPropsRecord> {
 
-	private static final long serialVersionUID = 1822669660;
+	private static final long serialVersionUID = -605299217;
 
 	/**
 	 * The reference instance of <code>road_to_b_dev.driver_props</code>
@@ -67,6 +68,11 @@ public class DriverProps extends TableImpl<DriverPropsRecord> {
 	 * The column <code>road_to_b_dev.driver_props.value</code>.
 	 */
 	public final TableField<DriverPropsRecord, String> VALUE = createField("value", org.jooq.impl.SQLDataType.VARCHAR.length(1024).nullable(false), this, "");
+
+	/**
+	 * The column <code>road_to_b_dev.driver_props.is_disabled</code>.
+	 */
+	public final TableField<DriverPropsRecord, Boolean> IS_DISABLED = createField("is_disabled", org.jooq.impl.SQLDataType.BOOLEAN.nullable(false), this, "");
 
 	/**
 	 * Create a <code>road_to_b_dev.driver_props</code> table reference
@@ -112,6 +118,14 @@ public class DriverProps extends TableImpl<DriverPropsRecord> {
 	@Override
 	public List<UniqueKey<DriverPropsRecord>> getKeys() {
 		return Arrays.<UniqueKey<DriverPropsRecord>>asList(Keys.KEY_DRIVER_PROPS_PRIMARY);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<ForeignKey<DriverPropsRecord, ?>> getReferences() {
+		return Arrays.<ForeignKey<DriverPropsRecord, ?>>asList(Keys.DRIVER_PROPS_IBFK_1);
 	}
 
 	/**

@@ -14,11 +14,17 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 import org.nazymko.road_to_b.dao.tables.Driver;
 import org.nazymko.road_to_b.dao.tables.DriverProps;
+import org.nazymko.road_to_b.dao.tables.DriverTypes;
+import org.nazymko.road_to_b.dao.tables.Order;
 import org.nazymko.road_to_b.dao.tables.Point;
+import org.nazymko.road_to_b.dao.tables.RoutPointMapping;
+import org.nazymko.road_to_b.dao.tables.Routine;
 import org.nazymko.road_to_b.dao.tables.Sits;
 import org.nazymko.road_to_b.dao.tables.Transport;
 import org.nazymko.road_to_b.dao.tables.TransportProps;
 import org.nazymko.road_to_b.dao.tables.Trip;
+import org.nazymko.road_to_b.dao.tables.User;
+import org.nazymko.road_to_b.dao.tables.UserContact;
 
 
 /**
@@ -34,7 +40,7 @@ import org.nazymko.road_to_b.dao.tables.Trip;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RoadToBDev extends SchemaImpl {
 
-	private static final long serialVersionUID = 553400330;
+	private static final long serialVersionUID = -638756697;
 
 	/**
 	 * The reference instance of <code>road_to_b_dev</code>
@@ -59,10 +65,16 @@ public class RoadToBDev extends SchemaImpl {
 		return Arrays.<Table<?>>asList(
 			Driver.DRIVER,
 			DriverProps.DRIVER_PROPS,
+			DriverTypes.DRIVER_TYPES,
+			Order.ORDER,
 			Point.POINT,
+			Routine.ROUTINE,
+			RoutPointMapping.ROUT_POINT_MAPPING,
 			Sits.SITS,
 			Transport.TRANSPORT,
 			TransportProps.TRANSPORT_PROPS,
-			Trip.TRIP);
+			Trip.TRIP,
+			User.USER,
+			UserContact.USER_CONTACT);
 	}
 }

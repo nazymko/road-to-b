@@ -16,7 +16,7 @@ import org.jooq.Record1;
 import org.jooq.Record5;
 import org.jooq.Row5;
 import org.jooq.impl.UpdatableRecordImpl;
-import org.nazymko.road_to_b.dao.tables.Point;
+import org.nazymko.road_to_b.dao.tables.Order;
 
 
 /**
@@ -31,85 +31,85 @@ import org.nazymko.road_to_b.dao.tables.Point;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "point", schema = "road_to_b_dev")
-public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Record5<Long, String, Double, Double, Boolean> {
+@Table(name = "order", schema = "road_to_b_dev")
+public class OrderRecord extends UpdatableRecordImpl<OrderRecord> implements Record5<Integer, Integer, Integer, Integer, Boolean> {
 
-	private static final long serialVersionUID = 1796681833;
+	private static final long serialVersionUID = 1759452243;
 
 	/**
-	 * Setter for <code>road_to_b_dev.point.id</code>.
+	 * Setter for <code>road_to_b_dev.order.id</code>.
 	 */
-	public void setId(Long value) {
+	public void setId(Integer value) {
 		setValue(0, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.point.id</code>.
+	 * Getter for <code>road_to_b_dev.order.id</code>.
 	 */
 	@Id
-	@Column(name = "id", unique = true, nullable = false, precision = 19)
+	@Column(name = "id", unique = true, nullable = false, precision = 10)
 	@NotNull
-	public Long getId() {
-		return (Long) getValue(0);
+	public Integer getId() {
+		return (Integer) getValue(0);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.point.name</code>.
+	 * Setter for <code>road_to_b_dev.order.sit_id</code>.
 	 */
-	public void setName(String value) {
+	public void setSitId(Integer value) {
 		setValue(1, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.point.name</code>.
+	 * Getter for <code>road_to_b_dev.order.sit_id</code>.
 	 */
-	@Column(name = "name", nullable = false)
+	@Column(name = "sit_id", nullable = false, precision = 10)
 	@NotNull
-	public String getName() {
-		return (String) getValue(1);
+	public Integer getSitId() {
+		return (Integer) getValue(1);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.point.longitude</code>.
+	 * Setter for <code>road_to_b_dev.order.trip_id</code>.
 	 */
-	public void setLongitude(Double value) {
+	public void setTripId(Integer value) {
 		setValue(2, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.point.longitude</code>.
+	 * Getter for <code>road_to_b_dev.order.trip_id</code>.
 	 */
-	@Column(name = "longitude", nullable = false, precision = 12)
+	@Column(name = "trip_id", nullable = false, precision = 10)
 	@NotNull
-	public Double getLongitude() {
-		return (Double) getValue(2);
+	public Integer getTripId() {
+		return (Integer) getValue(2);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.point.latitude</code>.
+	 * Setter for <code>road_to_b_dev.order.user_id</code>.
 	 */
-	public void setLatitude(Double value) {
+	public void setUserId(Integer value) {
 		setValue(3, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.point.latitude</code>.
+	 * Getter for <code>road_to_b_dev.order.user_id</code>.
 	 */
-	@Column(name = "latitude", nullable = false, precision = 12)
+	@Column(name = "user_id", nullable = false, precision = 10)
 	@NotNull
-	public Double getLatitude() {
-		return (Double) getValue(3);
+	public Integer getUserId() {
+		return (Integer) getValue(3);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.point.is_disabled</code>.
+	 * Setter for <code>road_to_b_dev.order.is_disabled</code>.
 	 */
 	public void setIsDisabled(Boolean value) {
 		setValue(4, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.point.is_disabled</code>.
+	 * Getter for <code>road_to_b_dev.order.is_disabled</code>.
 	 */
 	@Column(name = "is_disabled", nullable = false)
 	@NotNull
@@ -125,7 +125,7 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Record1<Long> key() {
+	public Record1<Integer> key() {
 		return (Record1) super.key();
 	}
 
@@ -137,7 +137,7 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row5<Long, String, Double, Double, Boolean> fieldsRow() {
+	public Row5<Integer, Integer, Integer, Integer, Boolean> fieldsRow() {
 		return (Row5) super.fieldsRow();
 	}
 
@@ -145,7 +145,7 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row5<Long, String, Double, Double, Boolean> valuesRow() {
+	public Row5<Integer, Integer, Integer, Integer, Boolean> valuesRow() {
 		return (Row5) super.valuesRow();
 	}
 
@@ -153,32 +153,32 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Field<Long> field1() {
-		return Point.POINT.ID;
+	public Field<Integer> field1() {
+		return Order.ORDER.ID;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Field<String> field2() {
-		return Point.POINT.NAME;
+	public Field<Integer> field2() {
+		return Order.ORDER.SIT_ID;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Field<Double> field3() {
-		return Point.POINT.LONGITUDE;
+	public Field<Integer> field3() {
+		return Order.ORDER.TRIP_ID;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Field<Double> field4() {
-		return Point.POINT.LATITUDE;
+	public Field<Integer> field4() {
+		return Order.ORDER.USER_ID;
 	}
 
 	/**
@@ -186,14 +186,14 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 */
 	@Override
 	public Field<Boolean> field5() {
-		return Point.POINT.IS_DISABLED;
+		return Order.ORDER.IS_DISABLED;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Long value1() {
+	public Integer value1() {
 		return getId();
 	}
 
@@ -201,24 +201,24 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String value2() {
-		return getName();
+	public Integer value2() {
+		return getSitId();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Double value3() {
-		return getLongitude();
+	public Integer value3() {
+		return getTripId();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Double value4() {
-		return getLatitude();
+	public Integer value4() {
+		return getUserId();
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public PointRecord value1(Long value) {
+	public OrderRecord value1(Integer value) {
 		setId(value);
 		return this;
 	}
@@ -242,8 +242,8 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public PointRecord value2(String value) {
-		setName(value);
+	public OrderRecord value2(Integer value) {
+		setSitId(value);
 		return this;
 	}
 
@@ -251,8 +251,8 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public PointRecord value3(Double value) {
-		setLongitude(value);
+	public OrderRecord value3(Integer value) {
+		setTripId(value);
 		return this;
 	}
 
@@ -260,8 +260,8 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public PointRecord value4(Double value) {
-		setLatitude(value);
+	public OrderRecord value4(Integer value) {
+		setUserId(value);
 		return this;
 	}
 
@@ -269,7 +269,7 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public PointRecord value5(Boolean value) {
+	public OrderRecord value5(Boolean value) {
 		setIsDisabled(value);
 		return this;
 	}
@@ -278,7 +278,7 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public PointRecord values(Long value1, String value2, Double value3, Double value4, Boolean value5) {
+	public OrderRecord values(Integer value1, Integer value2, Integer value3, Integer value4, Boolean value5) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
@@ -292,22 +292,22 @@ public class PointRecord extends UpdatableRecordImpl<PointRecord> implements Rec
 	// -------------------------------------------------------------------------
 
 	/**
-	 * Create a detached PointRecord
+	 * Create a detached OrderRecord
 	 */
-	public PointRecord() {
-		super(Point.POINT);
+	public OrderRecord() {
+		super(Order.ORDER);
 	}
 
 	/**
-	 * Create a detached, initialised PointRecord
+	 * Create a detached, initialised OrderRecord
 	 */
-	public PointRecord(Long id, String name, Double longitude, Double latitude, Boolean isDisabled) {
-		super(Point.POINT);
+	public OrderRecord(Integer id, Integer sitId, Integer tripId, Integer userId, Boolean isDisabled) {
+		super(Order.ORDER);
 
 		setValue(0, id);
-		setValue(1, name);
-		setValue(2, longitude);
-		setValue(3, latitude);
+		setValue(1, sitId);
+		setValue(2, tripId);
+		setValue(3, userId);
 		setValue(4, isDisabled);
 	}
 }

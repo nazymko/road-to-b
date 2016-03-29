@@ -27,30 +27,38 @@ import javax.validation.constraints.Size;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class Transport implements Serializable {
+@Table(name = "user_contact", schema = "road_to_b_dev")
+public class UserContact implements Serializable {
 
-	private static final long serialVersionUID = 1591597942;
+	private static final long serialVersionUID = -1516552309;
 
 	private Integer id;
-	private String  name;
+	private Integer userId;
+	private String  prop;
+	private String  value;
 	private Boolean isDisabled;
 
-	public Transport() {}
+	public UserContact() {}
 
-	public Transport(Transport value) {
+	public UserContact(UserContact value) {
 		this.id = value.id;
-		this.name = value.name;
+		this.userId = value.userId;
+		this.prop = value.prop;
+		this.value = value.value;
 		this.isDisabled = value.isDisabled;
 	}
 
-	public Transport(
+	public UserContact(
 		Integer id,
-		String  name,
+		Integer userId,
+		String  prop,
+		String  value,
 		Boolean isDisabled
 	) {
 		this.id = id;
-		this.name = name;
+		this.userId = userId;
+		this.prop = prop;
+		this.value = value;
 		this.isDisabled = isDisabled;
 	}
 
@@ -65,19 +73,39 @@ public class Transport implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", nullable = false, length = 1024)
+	@Column(name = "user_id", nullable = false, precision = 10)
+	@NotNull
+	public Integer getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	@Column(name = "prop", nullable = false, length = 128)
+	@NotNull
+	@Size(max = 128)
+	public String getProp() {
+		return this.prop;
+	}
+
+	public void setProp(String prop) {
+		this.prop = prop;
+	}
+
+	@Column(name = "value", nullable = false, length = 1024)
 	@NotNull
 	@Size(max = 1024)
-	public String getName() {
-		return this.name;
+	public String getValue() {
+		return this.value;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
-	@Column(name = "is_disabled", nullable = false)
-	@NotNull
+	@Column(name = "is_disabled")
 	public Boolean getIsDisabled() {
 		return this.isDisabled;
 	}
@@ -88,10 +116,12 @@ public class Transport implements Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("Transport (");
+		StringBuilder sb = new StringBuilder("UserContact (");
 
 		sb.append(id);
-		sb.append(", ").append(name);
+		sb.append(", ").append(userId);
+		sb.append(", ").append(prop);
+		sb.append(", ").append(value);
 		sb.append(", ").append(isDisabled);
 
 		sb.append(")");

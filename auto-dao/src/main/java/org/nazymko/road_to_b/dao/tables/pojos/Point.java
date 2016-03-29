@@ -29,12 +29,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "point", schema = "road_to_b_dev")
 public class Point implements Serializable {
 
-	private static final long serialVersionUID = 427720691;
+	private static final long serialVersionUID = -899458697;
 
-	private Long   id;
-	private String name;
-	private Double longitude;
-	private Double latitude;
+	private Long    id;
+	private String  name;
+	private Double  longitude;
+	private Double  latitude;
+	private Boolean isDisabled;
 
 	public Point() {}
 
@@ -43,18 +44,21 @@ public class Point implements Serializable {
 		this.name = value.name;
 		this.longitude = value.longitude;
 		this.latitude = value.latitude;
+		this.isDisabled = value.isDisabled;
 	}
 
 	public Point(
-		Long   id,
-		String name,
-		Double longitude,
-		Double latitude
+		Long    id,
+		String  name,
+		Double  longitude,
+		Double  latitude,
+		Boolean isDisabled
 	) {
 		this.id = id;
 		this.name = name;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		this.isDisabled = isDisabled;
 	}
 
 	@Id
@@ -98,6 +102,16 @@ public class Point implements Serializable {
 		this.latitude = latitude;
 	}
 
+	@Column(name = "is_disabled", nullable = false)
+	@NotNull
+	public Boolean getIsDisabled() {
+		return this.isDisabled;
+	}
+
+	public void setIsDisabled(Boolean isDisabled) {
+		this.isDisabled = isDisabled;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("Point (");
@@ -106,6 +120,7 @@ public class Point implements Serializable {
 		sb.append(", ").append(name);
 		sb.append(", ").append(longitude);
 		sb.append(", ").append(latitude);
+		sb.append(", ").append(isDisabled);
 
 		sb.append(")");
 		return sb.toString();

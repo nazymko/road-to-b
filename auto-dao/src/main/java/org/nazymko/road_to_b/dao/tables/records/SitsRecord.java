@@ -13,8 +13,8 @@ import javax.validation.constraints.NotNull;
 
 import org.jooq.Field;
 import org.jooq.Record1;
-import org.jooq.Record4;
-import org.jooq.Row4;
+import org.jooq.Record5;
+import org.jooq.Row5;
 import org.jooq.impl.UpdatableRecordImpl;
 import org.nazymko.road_to_b.dao.tables.Sits;
 
@@ -32,9 +32,9 @@ import org.nazymko.road_to_b.dao.tables.Sits;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
 @Table(name = "sits", schema = "road_to_b_dev")
-public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Record4<Integer, Integer, Integer, Short> {
+public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Record5<Integer, Integer, Integer, Short, Boolean> {
 
-	private static final long serialVersionUID = -64700845;
+	private static final long serialVersionUID = 283769759;
 
 	/**
 	 * Setter for <code>road_to_b_dev.sits.id</code>.
@@ -101,6 +101,22 @@ public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Recor
 		return (Short) getValue(3);
 	}
 
+	/**
+	 * Setter for <code>road_to_b_dev.sits.is_disabled</code>.
+	 */
+	public void setIsDisabled(Boolean value) {
+		setValue(4, value);
+	}
+
+	/**
+	 * Getter for <code>road_to_b_dev.sits.is_disabled</code>.
+	 */
+	@Column(name = "is_disabled", nullable = false)
+	@NotNull
+	public Boolean getIsDisabled() {
+		return (Boolean) getValue(4);
+	}
+
 	// -------------------------------------------------------------------------
 	// Primary key information
 	// -------------------------------------------------------------------------
@@ -114,23 +130,23 @@ public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Recor
 	}
 
 	// -------------------------------------------------------------------------
-	// Record4 type implementation
+	// Record5 type implementation
 	// -------------------------------------------------------------------------
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row4<Integer, Integer, Integer, Short> fieldsRow() {
-		return (Row4) super.fieldsRow();
+	public Row5<Integer, Integer, Integer, Short, Boolean> fieldsRow() {
+		return (Row5) super.fieldsRow();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row4<Integer, Integer, Integer, Short> valuesRow() {
-		return (Row4) super.valuesRow();
+	public Row5<Integer, Integer, Integer, Short, Boolean> valuesRow() {
+		return (Row5) super.valuesRow();
 	}
 
 	/**
@@ -169,6 +185,14 @@ public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
+	public Field<Boolean> field5() {
+		return Sits.SITS.IS_DISABLED;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Integer value1() {
 		return getId();
 	}
@@ -195,6 +219,14 @@ public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Recor
 	@Override
 	public Short value4() {
 		return getPlaceNumber();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Boolean value5() {
+		return getIsDisabled();
 	}
 
 	/**
@@ -237,11 +269,21 @@ public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public SitsRecord values(Integer value1, Integer value2, Integer value3, Short value4) {
+	public SitsRecord value5(Boolean value) {
+		setIsDisabled(value);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public SitsRecord values(Integer value1, Integer value2, Integer value3, Short value4, Boolean value5) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
 		value4(value4);
+		value5(value5);
 		return this;
 	}
 
@@ -259,12 +301,13 @@ public class SitsRecord extends UpdatableRecordImpl<SitsRecord> implements Recor
 	/**
 	 * Create a detached, initialised SitsRecord
 	 */
-	public SitsRecord(Integer id, Integer transportId, Integer tripId, Short placeNumber) {
+	public SitsRecord(Integer id, Integer transportId, Integer tripId, Short placeNumber, Boolean isDisabled) {
 		super(Sits.SITS);
 
 		setValue(0, id);
 		setValue(1, transportId);
 		setValue(2, tripId);
 		setValue(3, placeNumber);
+		setValue(4, isDisabled);
 	}
 }

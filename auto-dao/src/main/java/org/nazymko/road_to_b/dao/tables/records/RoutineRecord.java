@@ -17,7 +17,7 @@ import org.jooq.Record1;
 import org.jooq.Record3;
 import org.jooq.Row3;
 import org.jooq.impl.UpdatableRecordImpl;
-import org.nazymko.road_to_b.dao.tables.Transport;
+import org.nazymko.road_to_b.dao.tables.Routine;
 
 
 /**
@@ -32,20 +32,20 @@ import org.nazymko.road_to_b.dao.tables.Transport;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implements Record3<Integer, String, Boolean> {
+@Table(name = "routine", schema = "road_to_b_dev")
+public class RoutineRecord extends UpdatableRecordImpl<RoutineRecord> implements Record3<Integer, String, Boolean> {
 
-	private static final long serialVersionUID = -455399300;
+	private static final long serialVersionUID = -1456308460;
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.id</code>.
+	 * Setter for <code>road_to_b_dev.routine.id</code>.
 	 */
 	public void setId(Integer value) {
 		setValue(0, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.id</code>.
+	 * Getter for <code>road_to_b_dev.routine.id</code>.
 	 */
 	@Id
 	@Column(name = "id", unique = true, nullable = false, precision = 10)
@@ -55,31 +55,31 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.name</code>.
+	 * Setter for <code>road_to_b_dev.routine.description</code>.
 	 */
-	public void setName(String value) {
+	public void setDescription(String value) {
 		setValue(1, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.name</code>.
+	 * Getter for <code>road_to_b_dev.routine.description</code>.
 	 */
-	@Column(name = "name", nullable = false, length = 1024)
+	@Column(name = "description", nullable = false, length = 1024)
 	@NotNull
 	@Size(max = 1024)
-	public String getName() {
+	public String getDescription() {
 		return (String) getValue(1);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.is_disabled</code>.
+	 * Setter for <code>road_to_b_dev.routine.is_disabled</code>.
 	 */
 	public void setIsDisabled(Boolean value) {
 		setValue(2, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.is_disabled</code>.
+	 * Getter for <code>road_to_b_dev.routine.is_disabled</code>.
 	 */
 	@Column(name = "is_disabled", nullable = false)
 	@NotNull
@@ -124,7 +124,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<Integer> field1() {
-		return Transport.TRANSPORT.ID;
+		return Routine.ROUTINE.ID;
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<String> field2() {
-		return Transport.TRANSPORT.NAME;
+		return Routine.ROUTINE.DESCRIPTION;
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<Boolean> field3() {
-		return Transport.TRANSPORT.IS_DISABLED;
+		return Routine.ROUTINE.IS_DISABLED;
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public String value2() {
-		return getName();
+		return getDescription();
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value1(Integer value) {
+	public RoutineRecord value1(Integer value) {
 		setId(value);
 		return this;
 	}
@@ -180,8 +180,8 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value2(String value) {
-		setName(value);
+	public RoutineRecord value2(String value) {
+		setDescription(value);
 		return this;
 	}
 
@@ -189,7 +189,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value3(Boolean value) {
+	public RoutineRecord value3(Boolean value) {
 		setIsDisabled(value);
 		return this;
 	}
@@ -198,7 +198,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord values(Integer value1, String value2, Boolean value3) {
+	public RoutineRecord values(Integer value1, String value2, Boolean value3) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
@@ -210,20 +210,20 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	// -------------------------------------------------------------------------
 
 	/**
-	 * Create a detached TransportRecord
+	 * Create a detached RoutineRecord
 	 */
-	public TransportRecord() {
-		super(Transport.TRANSPORT);
+	public RoutineRecord() {
+		super(Routine.ROUTINE);
 	}
 
 	/**
-	 * Create a detached, initialised TransportRecord
+	 * Create a detached, initialised RoutineRecord
 	 */
-	public TransportRecord(Integer id, String name, Boolean isDisabled) {
-		super(Transport.TRANSPORT);
+	public RoutineRecord(Integer id, String description, Boolean isDisabled) {
+		super(Routine.ROUTINE);
 
 		setValue(0, id);
-		setValue(1, name);
+		setValue(1, description);
 		setValue(2, isDisabled);
 	}
 }

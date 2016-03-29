@@ -17,7 +17,7 @@ import org.jooq.Record1;
 import org.jooq.Record3;
 import org.jooq.Row3;
 import org.jooq.impl.UpdatableRecordImpl;
-import org.nazymko.road_to_b.dao.tables.Transport;
+import org.nazymko.road_to_b.dao.tables.User;
 
 
 /**
@@ -32,20 +32,20 @@ import org.nazymko.road_to_b.dao.tables.Transport;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implements Record3<Integer, String, Boolean> {
+@Table(name = "user", schema = "road_to_b_dev")
+public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Record3<Integer, String, Boolean> {
 
-	private static final long serialVersionUID = -455399300;
+	private static final long serialVersionUID = -317235954;
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.id</code>.
+	 * Setter for <code>road_to_b_dev.user.id</code>.
 	 */
 	public void setId(Integer value) {
 		setValue(0, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.id</code>.
+	 * Getter for <code>road_to_b_dev.user.id</code>.
 	 */
 	@Id
 	@Column(name = "id", unique = true, nullable = false, precision = 10)
@@ -55,14 +55,14 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.name</code>.
+	 * Setter for <code>road_to_b_dev.user.name</code>.
 	 */
 	public void setName(String value) {
 		setValue(1, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.name</code>.
+	 * Getter for <code>road_to_b_dev.user.name</code>.
 	 */
 	@Column(name = "name", nullable = false, length = 1024)
 	@NotNull
@@ -72,17 +72,16 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.is_disabled</code>.
+	 * Setter for <code>road_to_b_dev.user.is_disabled</code>.
 	 */
 	public void setIsDisabled(Boolean value) {
 		setValue(2, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.is_disabled</code>.
+	 * Getter for <code>road_to_b_dev.user.is_disabled</code>.
 	 */
-	@Column(name = "is_disabled", nullable = false)
-	@NotNull
+	@Column(name = "is_disabled")
 	public Boolean getIsDisabled() {
 		return (Boolean) getValue(2);
 	}
@@ -124,7 +123,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<Integer> field1() {
-		return Transport.TRANSPORT.ID;
+		return User.USER.ID;
 	}
 
 	/**
@@ -132,7 +131,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<String> field2() {
-		return Transport.TRANSPORT.NAME;
+		return User.USER.NAME;
 	}
 
 	/**
@@ -140,7 +139,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<Boolean> field3() {
-		return Transport.TRANSPORT.IS_DISABLED;
+		return User.USER.IS_DISABLED;
 	}
 
 	/**
@@ -171,7 +170,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value1(Integer value) {
+	public UserRecord value1(Integer value) {
 		setId(value);
 		return this;
 	}
@@ -180,7 +179,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value2(String value) {
+	public UserRecord value2(String value) {
 		setName(value);
 		return this;
 	}
@@ -189,7 +188,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value3(Boolean value) {
+	public UserRecord value3(Boolean value) {
 		setIsDisabled(value);
 		return this;
 	}
@@ -198,7 +197,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord values(Integer value1, String value2, Boolean value3) {
+	public UserRecord values(Integer value1, String value2, Boolean value3) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
@@ -210,17 +209,17 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	// -------------------------------------------------------------------------
 
 	/**
-	 * Create a detached TransportRecord
+	 * Create a detached UserRecord
 	 */
-	public TransportRecord() {
-		super(Transport.TRANSPORT);
+	public UserRecord() {
+		super(User.USER);
 	}
 
 	/**
-	 * Create a detached, initialised TransportRecord
+	 * Create a detached, initialised UserRecord
 	 */
-	public TransportRecord(Integer id, String name, Boolean isDisabled) {
-		super(Transport.TRANSPORT);
+	public UserRecord(Integer id, String name, Boolean isDisabled) {
+		super(User.USER);
 
 		setValue(0, id);
 		setValue(1, name);

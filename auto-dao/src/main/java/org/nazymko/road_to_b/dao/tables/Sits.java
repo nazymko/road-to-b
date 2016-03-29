@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -33,7 +34,7 @@ import org.nazymko.road_to_b.dao.tables.records.SitsRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Sits extends TableImpl<SitsRecord> {
 
-	private static final long serialVersionUID = -784306286;
+	private static final long serialVersionUID = 2100376545;
 
 	/**
 	 * The reference instance of <code>road_to_b_dev.sits</code>
@@ -67,6 +68,11 @@ public class Sits extends TableImpl<SitsRecord> {
 	 * The column <code>road_to_b_dev.sits.place_number</code>.
 	 */
 	public final TableField<SitsRecord, Short> PLACE_NUMBER = createField("place_number", org.jooq.impl.SQLDataType.SMALLINT.nullable(false), this, "");
+
+	/**
+	 * The column <code>road_to_b_dev.sits.is_disabled</code>.
+	 */
+	public final TableField<SitsRecord, Boolean> IS_DISABLED = createField("is_disabled", org.jooq.impl.SQLDataType.BOOLEAN.nullable(false), this, "");
 
 	/**
 	 * Create a <code>road_to_b_dev.sits</code> table reference
@@ -112,6 +118,14 @@ public class Sits extends TableImpl<SitsRecord> {
 	@Override
 	public List<UniqueKey<SitsRecord>> getKeys() {
 		return Arrays.<UniqueKey<SitsRecord>>asList(Keys.KEY_SITS_PRIMARY);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<ForeignKey<SitsRecord, ?>> getReferences() {
+		return Arrays.<ForeignKey<SitsRecord, ?>>asList(Keys.SITS_IBFK_1, Keys.SITS_IBFK_2);
 	}
 
 	/**

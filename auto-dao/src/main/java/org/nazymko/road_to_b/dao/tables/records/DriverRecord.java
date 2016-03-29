@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 
 import org.jooq.Field;
 import org.jooq.Record1;
-import org.jooq.Record4;
-import org.jooq.Row4;
+import org.jooq.Record5;
+import org.jooq.Row5;
 import org.jooq.impl.UpdatableRecordImpl;
 import org.nazymko.road_to_b.dao.tables.Driver;
 
@@ -33,9 +33,9 @@ import org.nazymko.road_to_b.dao.tables.Driver;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
 @Table(name = "driver", schema = "road_to_b_dev")
-public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements Record4<Integer, String, String, Boolean> {
+public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements Record5<Integer, String, String, Boolean, Integer> {
 
-	private static final long serialVersionUID = -1472687094;
+	private static final long serialVersionUID = -1695039691;
 
 	/**
 	 * Setter for <code>road_to_b_dev.driver.id</code>.
@@ -104,6 +104,22 @@ public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements R
 		return (Boolean) getValue(3);
 	}
 
+	/**
+	 * Setter for <code>road_to_b_dev.driver.driver_type</code>.
+	 */
+	public void setDriverType(Integer value) {
+		setValue(4, value);
+	}
+
+	/**
+	 * Getter for <code>road_to_b_dev.driver.driver_type</code>.
+	 */
+	@Column(name = "driver_type", nullable = false, precision = 10)
+	@NotNull
+	public Integer getDriverType() {
+		return (Integer) getValue(4);
+	}
+
 	// -------------------------------------------------------------------------
 	// Primary key information
 	// -------------------------------------------------------------------------
@@ -117,23 +133,23 @@ public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements R
 	}
 
 	// -------------------------------------------------------------------------
-	// Record4 type implementation
+	// Record5 type implementation
 	// -------------------------------------------------------------------------
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row4<Integer, String, String, Boolean> fieldsRow() {
-		return (Row4) super.fieldsRow();
+	public Row5<Integer, String, String, Boolean, Integer> fieldsRow() {
+		return (Row5) super.fieldsRow();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row4<Integer, String, String, Boolean> valuesRow() {
-		return (Row4) super.valuesRow();
+	public Row5<Integer, String, String, Boolean, Integer> valuesRow() {
+		return (Row5) super.valuesRow();
 	}
 
 	/**
@@ -172,6 +188,14 @@ public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements R
 	 * {@inheritDoc}
 	 */
 	@Override
+	public Field<Integer> field5() {
+		return Driver.DRIVER.DRIVER_TYPE;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Integer value1() {
 		return getId();
 	}
@@ -198,6 +222,14 @@ public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements R
 	@Override
 	public Boolean value4() {
 		return getIsDisabled();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Integer value5() {
+		return getDriverType();
 	}
 
 	/**
@@ -240,11 +272,21 @@ public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements R
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DriverRecord values(Integer value1, String value2, String value3, Boolean value4) {
+	public DriverRecord value5(Integer value) {
+		setDriverType(value);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public DriverRecord values(Integer value1, String value2, String value3, Boolean value4, Integer value5) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
 		value4(value4);
+		value5(value5);
 		return this;
 	}
 
@@ -262,12 +304,13 @@ public class DriverRecord extends UpdatableRecordImpl<DriverRecord> implements R
 	/**
 	 * Create a detached, initialised DriverRecord
 	 */
-	public DriverRecord(Integer id, String firstName, String lastName, Boolean isDisabled) {
+	public DriverRecord(Integer id, String firstName, String lastName, Boolean isDisabled, Integer driverType) {
 		super(Driver.DRIVER);
 
 		setValue(0, id);
 		setValue(1, firstName);
 		setValue(2, lastName);
 		setValue(3, isDisabled);
+		setValue(4, driverType);
 	}
 }

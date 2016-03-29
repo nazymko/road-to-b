@@ -27,29 +27,33 @@ import javax.validation.constraints.Size;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class Transport implements Serializable {
+@Table(name = "driver_types", schema = "road_to_b_dev")
+public class DriverTypes implements Serializable {
 
-	private static final long serialVersionUID = 1591597942;
+	private static final long serialVersionUID = -898318483;
 
 	private Integer id;
+	private String  description;
 	private String  name;
 	private Boolean isDisabled;
 
-	public Transport() {}
+	public DriverTypes() {}
 
-	public Transport(Transport value) {
+	public DriverTypes(DriverTypes value) {
 		this.id = value.id;
+		this.description = value.description;
 		this.name = value.name;
 		this.isDisabled = value.isDisabled;
 	}
 
-	public Transport(
+	public DriverTypes(
 		Integer id,
+		String  description,
 		String  name,
 		Boolean isDisabled
 	) {
 		this.id = id;
+		this.description = description;
 		this.name = name;
 		this.isDisabled = isDisabled;
 	}
@@ -63,6 +67,17 @@ public class Transport implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@Column(name = "description", nullable = false, length = 1024)
+	@NotNull
+	@Size(max = 1024)
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Column(name = "name", nullable = false, length = 1024)
@@ -88,9 +103,10 @@ public class Transport implements Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("Transport (");
+		StringBuilder sb = new StringBuilder("DriverTypes (");
 
 		sb.append(id);
+		sb.append(", ").append(description);
 		sb.append(", ").append(name);
 		sb.append(", ").append(isDisabled);
 

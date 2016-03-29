@@ -32,7 +32,7 @@ import org.nazymko.road_to_b.dao.tables.records.TransportRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Transport extends TableImpl<TransportRecord> {
 
-	private static final long serialVersionUID = 763850363;
+	private static final long serialVersionUID = -626644730;
 
 	/**
 	 * The reference instance of <code>road_to_b_dev.transport</code>
@@ -56,6 +56,11 @@ public class Transport extends TableImpl<TransportRecord> {
 	 * The column <code>road_to_b_dev.transport.name</code>.
 	 */
 	public final TableField<TransportRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(1024).nullable(false), this, "");
+
+	/**
+	 * The column <code>road_to_b_dev.transport.is_disabled</code>.
+	 */
+	public final TableField<TransportRecord, Boolean> IS_DISABLED = createField("is_disabled", org.jooq.impl.SQLDataType.BOOLEAN.nullable(false), this, "");
 
 	/**
 	 * Create a <code>road_to_b_dev.transport</code> table reference

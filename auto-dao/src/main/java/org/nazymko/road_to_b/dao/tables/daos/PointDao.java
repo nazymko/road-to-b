@@ -83,4 +83,11 @@ public class PointDao extends DAOImpl<PointRecord, org.nazymko.road_to_b.dao.tab
 	public List<org.nazymko.road_to_b.dao.tables.pojos.Point> fetchByLatitude(Double... values) {
 		return fetch(Point.POINT.LATITUDE, values);
 	}
+
+	/**
+	 * Fetch records that have <code>is_disabled IN (values)</code>
+	 */
+	public List<org.nazymko.road_to_b.dao.tables.pojos.Point> fetchByIsDisabled(Boolean... values) {
+		return fetch(Point.POINT.IS_DISABLED, values);
+	}
 }

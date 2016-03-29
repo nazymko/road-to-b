@@ -29,12 +29,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "sits", schema = "road_to_b_dev")
 public class Sits implements Serializable {
 
-	private static final long serialVersionUID = -1656364748;
+	private static final long serialVersionUID = -213867164;
 
 	private Integer id;
 	private Integer transportId;
 	private Integer tripId;
 	private Short   placeNumber;
+	private Boolean isDisabled;
 
 	public Sits() {}
 
@@ -43,18 +44,21 @@ public class Sits implements Serializable {
 		this.transportId = value.transportId;
 		this.tripId = value.tripId;
 		this.placeNumber = value.placeNumber;
+		this.isDisabled = value.isDisabled;
 	}
 
 	public Sits(
 		Integer id,
 		Integer transportId,
 		Integer tripId,
-		Short   placeNumber
+		Short   placeNumber,
+		Boolean isDisabled
 	) {
 		this.id = id;
 		this.transportId = transportId;
 		this.tripId = tripId;
 		this.placeNumber = placeNumber;
+		this.isDisabled = isDisabled;
 	}
 
 	@Id
@@ -98,6 +102,16 @@ public class Sits implements Serializable {
 		this.placeNumber = placeNumber;
 	}
 
+	@Column(name = "is_disabled", nullable = false)
+	@NotNull
+	public Boolean getIsDisabled() {
+		return this.isDisabled;
+	}
+
+	public void setIsDisabled(Boolean isDisabled) {
+		this.isDisabled = isDisabled;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("Sits (");
@@ -106,6 +120,7 @@ public class Sits implements Serializable {
 		sb.append(", ").append(transportId);
 		sb.append(", ").append(tripId);
 		sb.append(", ").append(placeNumber);
+		sb.append(", ").append(isDisabled);
 
 		sb.append(")");
 		return sb.toString();

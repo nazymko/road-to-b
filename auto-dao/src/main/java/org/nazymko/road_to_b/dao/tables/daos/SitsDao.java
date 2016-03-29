@@ -83,4 +83,11 @@ public class SitsDao extends DAOImpl<SitsRecord, org.nazymko.road_to_b.dao.table
 	public List<org.nazymko.road_to_b.dao.tables.pojos.Sits> fetchByPlaceNumber(Short... values) {
 		return fetch(Sits.SITS.PLACE_NUMBER, values);
 	}
+
+	/**
+	 * Fetch records that have <code>is_disabled IN (values)</code>
+	 */
+	public List<org.nazymko.road_to_b.dao.tables.pojos.Sits> fetchByIsDisabled(Boolean... values) {
+		return fetch(Sits.SITS.IS_DISABLED, values);
+	}
 }

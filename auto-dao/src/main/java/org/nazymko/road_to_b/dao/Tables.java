@@ -8,11 +8,17 @@ import javax.annotation.Generated;
 
 import org.nazymko.road_to_b.dao.tables.Driver;
 import org.nazymko.road_to_b.dao.tables.DriverProps;
+import org.nazymko.road_to_b.dao.tables.DriverTypes;
+import org.nazymko.road_to_b.dao.tables.Order;
 import org.nazymko.road_to_b.dao.tables.Point;
+import org.nazymko.road_to_b.dao.tables.RoutPointMapping;
+import org.nazymko.road_to_b.dao.tables.Routine;
 import org.nazymko.road_to_b.dao.tables.Sits;
 import org.nazymko.road_to_b.dao.tables.Transport;
 import org.nazymko.road_to_b.dao.tables.TransportProps;
 import org.nazymko.road_to_b.dao.tables.Trip;
+import org.nazymko.road_to_b.dao.tables.User;
+import org.nazymko.road_to_b.dao.tables.UserContact;
 
 
 /**
@@ -39,9 +45,29 @@ public class Tables {
 	public static final DriverProps DRIVER_PROPS = org.nazymko.road_to_b.dao.tables.DriverProps.DRIVER_PROPS;
 
 	/**
+	 * The table road_to_b_dev.driver_types
+	 */
+	public static final DriverTypes DRIVER_TYPES = org.nazymko.road_to_b.dao.tables.DriverTypes.DRIVER_TYPES;
+
+	/**
+	 * The table road_to_b_dev.order
+	 */
+	public static final Order ORDER = org.nazymko.road_to_b.dao.tables.Order.ORDER;
+
+	/**
 	 * The table road_to_b_dev.point
 	 */
 	public static final Point POINT = org.nazymko.road_to_b.dao.tables.Point.POINT;
+
+	/**
+	 * The table road_to_b_dev.routine
+	 */
+	public static final Routine ROUTINE = org.nazymko.road_to_b.dao.tables.Routine.ROUTINE;
+
+	/**
+	 * The table road_to_b_dev.rout_point_mapping
+	 */
+	public static final RoutPointMapping ROUT_POINT_MAPPING = org.nazymko.road_to_b.dao.tables.RoutPointMapping.ROUT_POINT_MAPPING;
 
 	/**
 	 * The table road_to_b_dev.sits
@@ -62,4 +88,14 @@ public class Tables {
 	 * The table road_to_b_dev.trip
 	 */
 	public static final Trip TRIP = org.nazymko.road_to_b.dao.tables.Trip.TRIP;
+
+	/**
+	 * The table road_to_b_dev.user
+	 */
+	public static final User USER = org.nazymko.road_to_b.dao.tables.User.USER;
+
+	/**
+	 * The table road_to_b_dev.user_contact
+	 */
+	public static final UserContact USER_CONTACT = org.nazymko.road_to_b.dao.tables.UserContact.USER_CONTACT;
 }

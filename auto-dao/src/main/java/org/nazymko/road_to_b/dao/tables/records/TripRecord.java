@@ -15,8 +15,8 @@ import javax.validation.constraints.NotNull;
 
 import org.jooq.Field;
 import org.jooq.Record1;
-import org.jooq.Record6;
-import org.jooq.Row6;
+import org.jooq.Record8;
+import org.jooq.Row8;
 import org.jooq.impl.UpdatableRecordImpl;
 import org.nazymko.road_to_b.dao.tables.Trip;
 
@@ -34,9 +34,9 @@ import org.nazymko.road_to_b.dao.tables.Trip;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
 @Table(name = "trip", schema = "road_to_b_dev")
-public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Record6<Integer, Integer, Integer, Timestamp, Timestamp, Timestamp> {
+public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Record8<Integer, Integer, Integer, Timestamp, Timestamp, Timestamp, Boolean, Integer> {
 
-	private static final long serialVersionUID = -998548426;
+	private static final long serialVersionUID = 1393842267;
 
 	/**
 	 * Setter for <code>road_to_b_dev.trip.id</code>.
@@ -135,6 +135,38 @@ public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Recor
 		return (Timestamp) getValue(5);
 	}
 
+	/**
+	 * Setter for <code>road_to_b_dev.trip.is_disabled</code>.
+	 */
+	public void setIsDisabled(Boolean value) {
+		setValue(6, value);
+	}
+
+	/**
+	 * Getter for <code>road_to_b_dev.trip.is_disabled</code>.
+	 */
+	@Column(name = "is_disabled", nullable = false)
+	@NotNull
+	public Boolean getIsDisabled() {
+		return (Boolean) getValue(6);
+	}
+
+	/**
+	 * Setter for <code>road_to_b_dev.trip.routine_id</code>.
+	 */
+	public void setRoutineId(Integer value) {
+		setValue(7, value);
+	}
+
+	/**
+	 * Getter for <code>road_to_b_dev.trip.routine_id</code>.
+	 */
+	@Column(name = "routine_id", nullable = false, precision = 10)
+	@NotNull
+	public Integer getRoutineId() {
+		return (Integer) getValue(7);
+	}
+
 	// -------------------------------------------------------------------------
 	// Primary key information
 	// -------------------------------------------------------------------------
@@ -148,23 +180,23 @@ public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Recor
 	}
 
 	// -------------------------------------------------------------------------
-	// Record6 type implementation
+	// Record8 type implementation
 	// -------------------------------------------------------------------------
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row6<Integer, Integer, Integer, Timestamp, Timestamp, Timestamp> fieldsRow() {
-		return (Row6) super.fieldsRow();
+	public Row8<Integer, Integer, Integer, Timestamp, Timestamp, Timestamp, Boolean, Integer> fieldsRow() {
+		return (Row8) super.fieldsRow();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row6<Integer, Integer, Integer, Timestamp, Timestamp, Timestamp> valuesRow() {
-		return (Row6) super.valuesRow();
+	public Row8<Integer, Integer, Integer, Timestamp, Timestamp, Timestamp, Boolean, Integer> valuesRow() {
+		return (Row8) super.valuesRow();
 	}
 
 	/**
@@ -219,6 +251,22 @@ public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
+	public Field<Boolean> field7() {
+		return Trip.TRIP.IS_DISABLED;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Field<Integer> field8() {
+		return Trip.TRIP.ROUTINE_ID;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Integer value1() {
 		return getId();
 	}
@@ -261,6 +309,22 @@ public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Recor
 	@Override
 	public Timestamp value6() {
 		return getCreatedAt();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Boolean value7() {
+		return getIsDisabled();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Integer value8() {
+		return getRoutineId();
 	}
 
 	/**
@@ -321,13 +385,33 @@ public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TripRecord values(Integer value1, Integer value2, Integer value3, Timestamp value4, Timestamp value5, Timestamp value6) {
+	public TripRecord value7(Boolean value) {
+		setIsDisabled(value);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public TripRecord value8(Integer value) {
+		setRoutineId(value);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public TripRecord values(Integer value1, Integer value2, Integer value3, Timestamp value4, Timestamp value5, Timestamp value6, Boolean value7, Integer value8) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
 		value4(value4);
 		value5(value5);
 		value6(value6);
+		value7(value7);
+		value8(value8);
 		return this;
 	}
 
@@ -345,7 +429,7 @@ public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Recor
 	/**
 	 * Create a detached, initialised TripRecord
 	 */
-	public TripRecord(Integer id, Integer transportId, Integer driverId, Timestamp departureDate, Timestamp arrivalDate, Timestamp createdAt) {
+	public TripRecord(Integer id, Integer transportId, Integer driverId, Timestamp departureDate, Timestamp arrivalDate, Timestamp createdAt, Boolean isDisabled, Integer routineId) {
 		super(Trip.TRIP);
 
 		setValue(0, id);
@@ -354,5 +438,7 @@ public class TripRecord extends UpdatableRecordImpl<TripRecord> implements Recor
 		setValue(3, departureDate);
 		setValue(4, arrivalDate);
 		setValue(5, createdAt);
+		setValue(6, isDisabled);
+		setValue(7, routineId);
 	}
 }

@@ -14,10 +14,10 @@ import javax.validation.constraints.Size;
 
 import org.jooq.Field;
 import org.jooq.Record1;
-import org.jooq.Record3;
-import org.jooq.Row3;
+import org.jooq.Record4;
+import org.jooq.Row4;
 import org.jooq.impl.UpdatableRecordImpl;
-import org.nazymko.road_to_b.dao.tables.Transport;
+import org.nazymko.road_to_b.dao.tables.DriverTypes;
 
 
 /**
@@ -32,20 +32,20 @@ import org.nazymko.road_to_b.dao.tables.Transport;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implements Record3<Integer, String, Boolean> {
+@Table(name = "driver_types", schema = "road_to_b_dev")
+public class DriverTypesRecord extends UpdatableRecordImpl<DriverTypesRecord> implements Record4<Integer, String, String, Boolean> {
 
-	private static final long serialVersionUID = -455399300;
+	private static final long serialVersionUID = -2139655446;
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.id</code>.
+	 * Setter for <code>road_to_b_dev.driver_types.id</code>.
 	 */
 	public void setId(Integer value) {
 		setValue(0, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.id</code>.
+	 * Getter for <code>road_to_b_dev.driver_types.id</code>.
 	 */
 	@Id
 	@Column(name = "id", unique = true, nullable = false, precision = 10)
@@ -55,36 +55,53 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.name</code>.
+	 * Setter for <code>road_to_b_dev.driver_types.description</code>.
 	 */
-	public void setName(String value) {
+	public void setDescription(String value) {
 		setValue(1, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.name</code>.
+	 * Getter for <code>road_to_b_dev.driver_types.description</code>.
+	 */
+	@Column(name = "description", nullable = false, length = 1024)
+	@NotNull
+	@Size(max = 1024)
+	public String getDescription() {
+		return (String) getValue(1);
+	}
+
+	/**
+	 * Setter for <code>road_to_b_dev.driver_types.name</code>.
+	 */
+	public void setName(String value) {
+		setValue(2, value);
+	}
+
+	/**
+	 * Getter for <code>road_to_b_dev.driver_types.name</code>.
 	 */
 	@Column(name = "name", nullable = false, length = 1024)
 	@NotNull
 	@Size(max = 1024)
 	public String getName() {
-		return (String) getValue(1);
+		return (String) getValue(2);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.transport.is_disabled</code>.
+	 * Setter for <code>road_to_b_dev.driver_types.is_disabled</code>.
 	 */
 	public void setIsDisabled(Boolean value) {
-		setValue(2, value);
+		setValue(3, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.transport.is_disabled</code>.
+	 * Getter for <code>road_to_b_dev.driver_types.is_disabled</code>.
 	 */
 	@Column(name = "is_disabled", nullable = false)
 	@NotNull
 	public Boolean getIsDisabled() {
-		return (Boolean) getValue(2);
+		return (Boolean) getValue(3);
 	}
 
 	// -------------------------------------------------------------------------
@@ -100,23 +117,23 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	}
 
 	// -------------------------------------------------------------------------
-	// Record3 type implementation
+	// Record4 type implementation
 	// -------------------------------------------------------------------------
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row3<Integer, String, Boolean> fieldsRow() {
-		return (Row3) super.fieldsRow();
+	public Row4<Integer, String, String, Boolean> fieldsRow() {
+		return (Row4) super.fieldsRow();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row3<Integer, String, Boolean> valuesRow() {
-		return (Row3) super.valuesRow();
+	public Row4<Integer, String, String, Boolean> valuesRow() {
+		return (Row4) super.valuesRow();
 	}
 
 	/**
@@ -124,7 +141,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<Integer> field1() {
-		return Transport.TRANSPORT.ID;
+		return DriverTypes.DRIVER_TYPES.ID;
 	}
 
 	/**
@@ -132,15 +149,23 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public Field<String> field2() {
-		return Transport.TRANSPORT.NAME;
+		return DriverTypes.DRIVER_TYPES.DESCRIPTION;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Field<Boolean> field3() {
-		return Transport.TRANSPORT.IS_DISABLED;
+	public Field<String> field3() {
+		return DriverTypes.DRIVER_TYPES.NAME;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Field<Boolean> field4() {
+		return DriverTypes.DRIVER_TYPES.IS_DISABLED;
 	}
 
 	/**
@@ -156,6 +181,14 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 */
 	@Override
 	public String value2() {
+		return getDescription();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String value3() {
 		return getName();
 	}
 
@@ -163,7 +196,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Boolean value3() {
+	public Boolean value4() {
 		return getIsDisabled();
 	}
 
@@ -171,7 +204,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value1(Integer value) {
+	public DriverTypesRecord value1(Integer value) {
 		setId(value);
 		return this;
 	}
@@ -180,7 +213,16 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value2(String value) {
+	public DriverTypesRecord value2(String value) {
+		setDescription(value);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public DriverTypesRecord value3(String value) {
 		setName(value);
 		return this;
 	}
@@ -189,7 +231,7 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord value3(Boolean value) {
+	public DriverTypesRecord value4(Boolean value) {
 		setIsDisabled(value);
 		return this;
 	}
@@ -198,10 +240,11 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TransportRecord values(Integer value1, String value2, Boolean value3) {
+	public DriverTypesRecord values(Integer value1, String value2, String value3, Boolean value4) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
+		value4(value4);
 		return this;
 	}
 
@@ -210,20 +253,21 @@ public class TransportRecord extends UpdatableRecordImpl<TransportRecord> implem
 	// -------------------------------------------------------------------------
 
 	/**
-	 * Create a detached TransportRecord
+	 * Create a detached DriverTypesRecord
 	 */
-	public TransportRecord() {
-		super(Transport.TRANSPORT);
+	public DriverTypesRecord() {
+		super(DriverTypes.DRIVER_TYPES);
 	}
 
 	/**
-	 * Create a detached, initialised TransportRecord
+	 * Create a detached, initialised DriverTypesRecord
 	 */
-	public TransportRecord(Integer id, String name, Boolean isDisabled) {
-		super(Transport.TRANSPORT);
+	public DriverTypesRecord(Integer id, String description, String name, Boolean isDisabled) {
+		super(DriverTypes.DRIVER_TYPES);
 
 		setValue(0, id);
-		setValue(1, name);
-		setValue(2, isDisabled);
+		setValue(1, description);
+		setValue(2, name);
+		setValue(3, isDisabled);
 	}
 }

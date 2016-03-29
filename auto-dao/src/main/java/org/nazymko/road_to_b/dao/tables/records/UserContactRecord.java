@@ -17,7 +17,7 @@ import org.jooq.Record1;
 import org.jooq.Record5;
 import org.jooq.Row5;
 import org.jooq.impl.UpdatableRecordImpl;
-import org.nazymko.road_to_b.dao.tables.DriverProps;
+import org.nazymko.road_to_b.dao.tables.UserContact;
 
 
 /**
@@ -32,20 +32,20 @@ import org.nazymko.road_to_b.dao.tables.DriverProps;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "driver_props", schema = "road_to_b_dev")
-public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> implements Record5<Integer, Integer, String, String, Boolean> {
+@Table(name = "user_contact", schema = "road_to_b_dev")
+public class UserContactRecord extends UpdatableRecordImpl<UserContactRecord> implements Record5<Integer, Integer, String, String, Boolean> {
 
-	private static final long serialVersionUID = 2049260061;
+	private static final long serialVersionUID = -1712801107;
 
 	/**
-	 * Setter for <code>road_to_b_dev.driver_props.id</code>.
+	 * Setter for <code>road_to_b_dev.user_contact.id</code>.
 	 */
 	public void setId(Integer value) {
 		setValue(0, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.driver_props.id</code>.
+	 * Getter for <code>road_to_b_dev.user_contact.id</code>.
 	 */
 	@Id
 	@Column(name = "id", unique = true, nullable = false, precision = 10)
@@ -55,47 +55,47 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.driver_props.driver_id</code>.
+	 * Setter for <code>road_to_b_dev.user_contact.user_id</code>.
 	 */
-	public void setDriverId(Integer value) {
+	public void setUserId(Integer value) {
 		setValue(1, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.driver_props.driver_id</code>.
+	 * Getter for <code>road_to_b_dev.user_contact.user_id</code>.
 	 */
-	@Column(name = "driver_id", nullable = false, precision = 10)
+	@Column(name = "user_id", nullable = false, precision = 10)
 	@NotNull
-	public Integer getDriverId() {
+	public Integer getUserId() {
 		return (Integer) getValue(1);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.driver_props.prop</code>.
+	 * Setter for <code>road_to_b_dev.user_contact.prop</code>.
 	 */
 	public void setProp(String value) {
 		setValue(2, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.driver_props.prop</code>.
+	 * Getter for <code>road_to_b_dev.user_contact.prop</code>.
 	 */
-	@Column(name = "prop", nullable = false, length = 1024)
+	@Column(name = "prop", nullable = false, length = 128)
 	@NotNull
-	@Size(max = 1024)
+	@Size(max = 128)
 	public String getProp() {
 		return (String) getValue(2);
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.driver_props.value</code>.
+	 * Setter for <code>road_to_b_dev.user_contact.value</code>.
 	 */
 	public void setValue(String value) {
 		setValue(3, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.driver_props.value</code>.
+	 * Getter for <code>road_to_b_dev.user_contact.value</code>.
 	 */
 	@Column(name = "value", nullable = false, length = 1024)
 	@NotNull
@@ -105,17 +105,16 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	}
 
 	/**
-	 * Setter for <code>road_to_b_dev.driver_props.is_disabled</code>.
+	 * Setter for <code>road_to_b_dev.user_contact.is_disabled</code>.
 	 */
 	public void setIsDisabled(Boolean value) {
 		setValue(4, value);
 	}
 
 	/**
-	 * Getter for <code>road_to_b_dev.driver_props.is_disabled</code>.
+	 * Getter for <code>road_to_b_dev.user_contact.is_disabled</code>.
 	 */
-	@Column(name = "is_disabled", nullable = false)
-	@NotNull
+	@Column(name = "is_disabled")
 	public Boolean getIsDisabled() {
 		return (Boolean) getValue(4);
 	}
@@ -157,7 +156,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 */
 	@Override
 	public Field<Integer> field1() {
-		return DriverProps.DRIVER_PROPS.ID;
+		return UserContact.USER_CONTACT.ID;
 	}
 
 	/**
@@ -165,7 +164,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 */
 	@Override
 	public Field<Integer> field2() {
-		return DriverProps.DRIVER_PROPS.DRIVER_ID;
+		return UserContact.USER_CONTACT.USER_ID;
 	}
 
 	/**
@@ -173,7 +172,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 */
 	@Override
 	public Field<String> field3() {
-		return DriverProps.DRIVER_PROPS.PROP;
+		return UserContact.USER_CONTACT.PROP;
 	}
 
 	/**
@@ -181,7 +180,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 */
 	@Override
 	public Field<String> field4() {
-		return DriverProps.DRIVER_PROPS.VALUE;
+		return UserContact.USER_CONTACT.VALUE;
 	}
 
 	/**
@@ -189,7 +188,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 */
 	@Override
 	public Field<Boolean> field5() {
-		return DriverProps.DRIVER_PROPS.IS_DISABLED;
+		return UserContact.USER_CONTACT.IS_DISABLED;
 	}
 
 	/**
@@ -205,7 +204,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 */
 	@Override
 	public Integer value2() {
-		return getDriverId();
+		return getUserId();
 	}
 
 	/**
@@ -236,7 +235,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DriverPropsRecord value1(Integer value) {
+	public UserContactRecord value1(Integer value) {
 		setId(value);
 		return this;
 	}
@@ -245,8 +244,8 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DriverPropsRecord value2(Integer value) {
-		setDriverId(value);
+	public UserContactRecord value2(Integer value) {
+		setUserId(value);
 		return this;
 	}
 
@@ -254,7 +253,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DriverPropsRecord value3(String value) {
+	public UserContactRecord value3(String value) {
 		setProp(value);
 		return this;
 	}
@@ -263,7 +262,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DriverPropsRecord value4(String value) {
+	public UserContactRecord value4(String value) {
 		setValue(value);
 		return this;
 	}
@@ -272,7 +271,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DriverPropsRecord value5(Boolean value) {
+	public UserContactRecord value5(Boolean value) {
 		setIsDisabled(value);
 		return this;
 	}
@@ -281,7 +280,7 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DriverPropsRecord values(Integer value1, Integer value2, String value3, String value4, Boolean value5) {
+	public UserContactRecord values(Integer value1, Integer value2, String value3, String value4, Boolean value5) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
@@ -295,20 +294,20 @@ public class DriverPropsRecord extends UpdatableRecordImpl<DriverPropsRecord> im
 	// -------------------------------------------------------------------------
 
 	/**
-	 * Create a detached DriverPropsRecord
+	 * Create a detached UserContactRecord
 	 */
-	public DriverPropsRecord() {
-		super(DriverProps.DRIVER_PROPS);
+	public UserContactRecord() {
+		super(UserContact.USER_CONTACT);
 	}
 
 	/**
-	 * Create a detached, initialised DriverPropsRecord
+	 * Create a detached, initialised UserContactRecord
 	 */
-	public DriverPropsRecord(Integer id, Integer driverId, String prop, String value, Boolean isDisabled) {
-		super(DriverProps.DRIVER_PROPS);
+	public UserContactRecord(Integer id, Integer userId, String prop, String value, Boolean isDisabled) {
+		super(UserContact.USER_CONTACT);
 
 		setValue(0, id);
-		setValue(1, driverId);
+		setValue(1, userId);
 		setValue(2, prop);
 		setValue(3, value);
 		setValue(4, isDisabled);

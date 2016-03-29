@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -33,7 +34,7 @@ import org.nazymko.road_to_b.dao.tables.records.TransportPropsRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TransportProps extends TableImpl<TransportPropsRecord> {
 
-	private static final long serialVersionUID = 917997542;
+	private static final long serialVersionUID = 778384296;
 
 	/**
 	 * The reference instance of <code>road_to_b_dev.transport_props</code>
@@ -117,6 +118,14 @@ public class TransportProps extends TableImpl<TransportPropsRecord> {
 	@Override
 	public List<UniqueKey<TransportPropsRecord>> getKeys() {
 		return Arrays.<UniqueKey<TransportPropsRecord>>asList(Keys.KEY_TRANSPORT_PROPS_PRIMARY);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<ForeignKey<TransportPropsRecord, ?>> getReferences() {
+		return Arrays.<ForeignKey<TransportPropsRecord, ?>>asList(Keys.TRANSPORT_PROPS_IBFK_1);
 	}
 
 	/**

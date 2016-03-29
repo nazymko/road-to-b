@@ -30,12 +30,13 @@ import javax.validation.constraints.Size;
 @Table(name = "driver_props", schema = "road_to_b_dev")
 public class DriverProps implements Serializable {
 
-	private static final long serialVersionUID = -2025632998;
+	private static final long serialVersionUID = 176410068;
 
 	private Integer id;
 	private Integer driverId;
 	private String  prop;
 	private String  value;
+	private Boolean isDisabled;
 
 	public DriverProps() {}
 
@@ -44,18 +45,21 @@ public class DriverProps implements Serializable {
 		this.driverId = value.driverId;
 		this.prop = value.prop;
 		this.value = value.value;
+		this.isDisabled = value.isDisabled;
 	}
 
 	public DriverProps(
 		Integer id,
 		Integer driverId,
 		String  prop,
-		String  value
+		String  value,
+		Boolean isDisabled
 	) {
 		this.id = id;
 		this.driverId = driverId;
 		this.prop = prop;
 		this.value = value;
+		this.isDisabled = isDisabled;
 	}
 
 	@Id
@@ -101,6 +105,16 @@ public class DriverProps implements Serializable {
 		this.value = value;
 	}
 
+	@Column(name = "is_disabled", nullable = false)
+	@NotNull
+	public Boolean getIsDisabled() {
+		return this.isDisabled;
+	}
+
+	public void setIsDisabled(Boolean isDisabled) {
+		this.isDisabled = isDisabled;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("DriverProps (");
@@ -109,6 +123,7 @@ public class DriverProps implements Serializable {
 		sb.append(", ").append(driverId);
 		sb.append(", ").append(prop);
 		sb.append(", ").append(value);
+		sb.append(", ").append(isDisabled);
 
 		sb.append(")");
 		return sb.toString();

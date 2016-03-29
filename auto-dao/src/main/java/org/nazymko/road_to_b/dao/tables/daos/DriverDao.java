@@ -83,4 +83,11 @@ public class DriverDao extends DAOImpl<DriverRecord, org.nazymko.road_to_b.dao.t
 	public List<org.nazymko.road_to_b.dao.tables.pojos.Driver> fetchByIsDisabled(Boolean... values) {
 		return fetch(Driver.DRIVER.IS_DISABLED, values);
 	}
+
+	/**
+	 * Fetch records that have <code>driver_type IN (values)</code>
+	 */
+	public List<org.nazymko.road_to_b.dao.tables.pojos.Driver> fetchByDriverType(Integer... values) {
+		return fetch(Driver.DRIVER.DRIVER_TYPE, values);
+	}
 }

@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "trip", schema = "road_to_b_dev")
 public class Trip implements Serializable {
 
-	private static final long serialVersionUID = 1488919906;
+	private static final long serialVersionUID = -633738568;
 
 	private Integer   id;
 	private Integer   transportId;
@@ -38,6 +38,8 @@ public class Trip implements Serializable {
 	private Timestamp departureDate;
 	private Timestamp arrivalDate;
 	private Timestamp createdAt;
+	private Boolean   isDisabled;
+	private Integer   routineId;
 
 	public Trip() {}
 
@@ -48,6 +50,8 @@ public class Trip implements Serializable {
 		this.departureDate = value.departureDate;
 		this.arrivalDate = value.arrivalDate;
 		this.createdAt = value.createdAt;
+		this.isDisabled = value.isDisabled;
+		this.routineId = value.routineId;
 	}
 
 	public Trip(
@@ -56,7 +60,9 @@ public class Trip implements Serializable {
 		Integer   driverId,
 		Timestamp departureDate,
 		Timestamp arrivalDate,
-		Timestamp createdAt
+		Timestamp createdAt,
+		Boolean   isDisabled,
+		Integer   routineId
 	) {
 		this.id = id;
 		this.transportId = transportId;
@@ -64,6 +70,8 @@ public class Trip implements Serializable {
 		this.departureDate = departureDate;
 		this.arrivalDate = arrivalDate;
 		this.createdAt = createdAt;
+		this.isDisabled = isDisabled;
+		this.routineId = routineId;
 	}
 
 	@Id
@@ -127,6 +135,26 @@ public class Trip implements Serializable {
 		this.createdAt = createdAt;
 	}
 
+	@Column(name = "is_disabled", nullable = false)
+	@NotNull
+	public Boolean getIsDisabled() {
+		return this.isDisabled;
+	}
+
+	public void setIsDisabled(Boolean isDisabled) {
+		this.isDisabled = isDisabled;
+	}
+
+	@Column(name = "routine_id", nullable = false, precision = 10)
+	@NotNull
+	public Integer getRoutineId() {
+		return this.routineId;
+	}
+
+	public void setRoutineId(Integer routineId) {
+		this.routineId = routineId;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("Trip (");
@@ -137,6 +165,8 @@ public class Trip implements Serializable {
 		sb.append(", ").append(departureDate);
 		sb.append(", ").append(arrivalDate);
 		sb.append(", ").append(createdAt);
+		sb.append(", ").append(isDisabled);
+		sb.append(", ").append(routineId);
 
 		sb.append(")");
 		return sb.toString();

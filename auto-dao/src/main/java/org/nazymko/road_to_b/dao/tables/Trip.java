@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -33,7 +34,7 @@ import org.nazymko.road_to_b.dao.tables.records.TripRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Trip extends TableImpl<TripRecord> {
 
-	private static final long serialVersionUID = -884949688;
+	private static final long serialVersionUID = -683916557;
 
 	/**
 	 * The reference instance of <code>road_to_b_dev.trip</code>
@@ -79,6 +80,16 @@ public class Trip extends TableImpl<TripRecord> {
 	public final TableField<TripRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaulted(true), this, "");
 
 	/**
+	 * The column <code>road_to_b_dev.trip.is_disabled</code>.
+	 */
+	public final TableField<TripRecord, Boolean> IS_DISABLED = createField("is_disabled", org.jooq.impl.SQLDataType.BOOLEAN.nullable(false), this, "");
+
+	/**
+	 * The column <code>road_to_b_dev.trip.routine_id</code>.
+	 */
+	public final TableField<TripRecord, Integer> ROUTINE_ID = createField("routine_id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+	/**
 	 * Create a <code>road_to_b_dev.trip</code> table reference
 	 */
 	public Trip() {
@@ -114,6 +125,14 @@ public class Trip extends TableImpl<TripRecord> {
 	@Override
 	public List<UniqueKey<TripRecord>> getKeys() {
 		return Arrays.<UniqueKey<TripRecord>>asList(Keys.KEY_TRIP_PRIMARY);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<ForeignKey<TripRecord, ?>> getReferences() {
+		return Arrays.<ForeignKey<TripRecord, ?>>asList(Keys.TRIP_IBFK_1, Keys.TRIP_IBFK_2, Keys.TRIP_IBFK_3);
 	}
 
 	/**

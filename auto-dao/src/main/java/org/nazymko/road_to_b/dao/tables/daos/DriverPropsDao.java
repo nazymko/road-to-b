@@ -83,4 +83,11 @@ public class DriverPropsDao extends DAOImpl<DriverPropsRecord, org.nazymko.road_
 	public List<org.nazymko.road_to_b.dao.tables.pojos.DriverProps> fetchByValue(String... values) {
 		return fetch(DriverProps.DRIVER_PROPS.VALUE, values);
 	}
+
+	/**
+	 * Fetch records that have <code>is_disabled IN (values)</code>
+	 */
+	public List<org.nazymko.road_to_b.dao.tables.pojos.DriverProps> fetchByIsDisabled(Boolean... values) {
+		return fetch(DriverProps.DRIVER_PROPS.IS_DISABLED, values);
+	}
 }

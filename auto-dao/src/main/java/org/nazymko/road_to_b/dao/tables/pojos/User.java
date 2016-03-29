@@ -27,24 +27,24 @@ import javax.validation.constraints.Size;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class Transport implements Serializable {
+@Table(name = "user", schema = "road_to_b_dev")
+public class User implements Serializable {
 
-	private static final long serialVersionUID = 1591597942;
+	private static final long serialVersionUID = 1434827778;
 
 	private Integer id;
 	private String  name;
 	private Boolean isDisabled;
 
-	public Transport() {}
+	public User() {}
 
-	public Transport(Transport value) {
+	public User(User value) {
 		this.id = value.id;
 		this.name = value.name;
 		this.isDisabled = value.isDisabled;
 	}
 
-	public Transport(
+	public User(
 		Integer id,
 		String  name,
 		Boolean isDisabled
@@ -76,8 +76,7 @@ public class Transport implements Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "is_disabled", nullable = false)
-	@NotNull
+	@Column(name = "is_disabled")
 	public Boolean getIsDisabled() {
 		return this.isDisabled;
 	}
@@ -88,7 +87,7 @@ public class Transport implements Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("Transport (");
+		StringBuilder sb = new StringBuilder("User (");
 
 		sb.append(id);
 		sb.append(", ").append(name);

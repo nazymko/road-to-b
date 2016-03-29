@@ -98,4 +98,18 @@ public class TripDao extends DAOImpl<TripRecord, org.nazymko.road_to_b.dao.table
 	public List<org.nazymko.road_to_b.dao.tables.pojos.Trip> fetchByCreatedAt(Timestamp... values) {
 		return fetch(Trip.TRIP.CREATED_AT, values);
 	}
+
+	/**
+	 * Fetch records that have <code>is_disabled IN (values)</code>
+	 */
+	public List<org.nazymko.road_to_b.dao.tables.pojos.Trip> fetchByIsDisabled(Boolean... values) {
+		return fetch(Trip.TRIP.IS_DISABLED, values);
+	}
+
+	/**
+	 * Fetch records that have <code>routine_id IN (values)</code>
+	 */
+	public List<org.nazymko.road_to_b.dao.tables.pojos.Trip> fetchByRoutineId(Integer... values) {
+		return fetch(Trip.TRIP.ROUTINE_ID, values);
+	}
 }

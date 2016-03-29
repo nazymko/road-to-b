@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 
 /**
@@ -27,30 +26,38 @@ import javax.validation.constraints.Size;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class Transport implements Serializable {
+@Table(name = "order", schema = "road_to_b_dev")
+public class Order implements Serializable {
 
-	private static final long serialVersionUID = 1591597942;
+	private static final long serialVersionUID = -347451341;
 
 	private Integer id;
-	private String  name;
+	private Integer sitId;
+	private Integer tripId;
+	private Integer userId;
 	private Boolean isDisabled;
 
-	public Transport() {}
+	public Order() {}
 
-	public Transport(Transport value) {
+	public Order(Order value) {
 		this.id = value.id;
-		this.name = value.name;
+		this.sitId = value.sitId;
+		this.tripId = value.tripId;
+		this.userId = value.userId;
 		this.isDisabled = value.isDisabled;
 	}
 
-	public Transport(
+	public Order(
 		Integer id,
-		String  name,
+		Integer sitId,
+		Integer tripId,
+		Integer userId,
 		Boolean isDisabled
 	) {
 		this.id = id;
-		this.name = name;
+		this.sitId = sitId;
+		this.tripId = tripId;
+		this.userId = userId;
 		this.isDisabled = isDisabled;
 	}
 
@@ -65,15 +72,34 @@ public class Transport implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", nullable = false, length = 1024)
+	@Column(name = "sit_id", nullable = false, precision = 10)
 	@NotNull
-	@Size(max = 1024)
-	public String getName() {
-		return this.name;
+	public Integer getSitId() {
+		return this.sitId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSitId(Integer sitId) {
+		this.sitId = sitId;
+	}
+
+	@Column(name = "trip_id", nullable = false, precision = 10)
+	@NotNull
+	public Integer getTripId() {
+		return this.tripId;
+	}
+
+	public void setTripId(Integer tripId) {
+		this.tripId = tripId;
+	}
+
+	@Column(name = "user_id", nullable = false, precision = 10)
+	@NotNull
+	public Integer getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	@Column(name = "is_disabled", nullable = false)
@@ -88,10 +114,12 @@ public class Transport implements Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("Transport (");
+		StringBuilder sb = new StringBuilder("Order (");
 
 		sb.append(id);
-		sb.append(", ").append(name);
+		sb.append(", ").append(sitId);
+		sb.append(", ").append(tripId);
+		sb.append(", ").append(userId);
 		sb.append(", ").append(isDisabled);
 
 		sb.append(")");

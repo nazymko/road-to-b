@@ -69,4 +69,11 @@ public class TransportDao extends DAOImpl<TransportRecord, org.nazymko.road_to_b
 	public List<org.nazymko.road_to_b.dao.tables.pojos.Transport> fetchByName(String... values) {
 		return fetch(Transport.TRANSPORT.NAME, values);
 	}
+
+	/**
+	 * Fetch records that have <code>is_disabled IN (values)</code>
+	 */
+	public List<org.nazymko.road_to_b.dao.tables.pojos.Transport> fetchByIsDisabled(Boolean... values) {
+		return fetch(Transport.TRANSPORT.IS_DISABLED, values);
+	}
 }

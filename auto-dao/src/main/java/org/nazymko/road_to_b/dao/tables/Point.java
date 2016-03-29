@@ -33,7 +33,7 @@ import org.nazymko.road_to_b.dao.tables.records.PointRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Point extends TableImpl<PointRecord> {
 
-	private static final long serialVersionUID = 90000571;
+	private static final long serialVersionUID = -1420084926;
 
 	/**
 	 * The reference instance of <code>road_to_b_dev.point</code>
@@ -67,6 +67,11 @@ public class Point extends TableImpl<PointRecord> {
 	 * The column <code>road_to_b_dev.point.latitude</code>.
 	 */
 	public final TableField<PointRecord, Double> LATITUDE = createField("latitude", org.jooq.impl.SQLDataType.FLOAT.nullable(false), this, "");
+
+	/**
+	 * The column <code>road_to_b_dev.point.is_disabled</code>.
+	 */
+	public final TableField<PointRecord, Boolean> IS_DISABLED = createField("is_disabled", org.jooq.impl.SQLDataType.BOOLEAN.nullable(false), this, "");
 
 	/**
 	 * Create a <code>road_to_b_dev.point</code> table reference

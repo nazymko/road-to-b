@@ -27,30 +27,30 @@ import javax.validation.constraints.Size;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
-@Table(name = "transport", schema = "road_to_b_dev")
-public class Transport implements Serializable {
+@Table(name = "routine", schema = "road_to_b_dev")
+public class Routine implements Serializable {
 
-	private static final long serialVersionUID = 1591597942;
+	private static final long serialVersionUID = 514029109;
 
 	private Integer id;
-	private String  name;
+	private String  description;
 	private Boolean isDisabled;
 
-	public Transport() {}
+	public Routine() {}
 
-	public Transport(Transport value) {
+	public Routine(Routine value) {
 		this.id = value.id;
-		this.name = value.name;
+		this.description = value.description;
 		this.isDisabled = value.isDisabled;
 	}
 
-	public Transport(
+	public Routine(
 		Integer id,
-		String  name,
+		String  description,
 		Boolean isDisabled
 	) {
 		this.id = id;
-		this.name = name;
+		this.description = description;
 		this.isDisabled = isDisabled;
 	}
 
@@ -65,15 +65,15 @@ public class Transport implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", nullable = false, length = 1024)
+	@Column(name = "description", nullable = false, length = 1024)
 	@NotNull
 	@Size(max = 1024)
-	public String getName() {
-		return this.name;
+	public String getDescription() {
+		return this.description;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Column(name = "is_disabled", nullable = false)
@@ -88,10 +88,10 @@ public class Transport implements Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("Transport (");
+		StringBuilder sb = new StringBuilder("Routine (");
 
 		sb.append(id);
-		sb.append(", ").append(name);
+		sb.append(", ").append(description);
 		sb.append(", ").append(isDisabled);
 
 		sb.append(")");
