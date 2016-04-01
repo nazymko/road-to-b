@@ -50,5 +50,10 @@
             <artifactId>spring-web</artifactId>
             <version>4.2.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>road-to-b</groupId>
+            <artifactId>custom-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

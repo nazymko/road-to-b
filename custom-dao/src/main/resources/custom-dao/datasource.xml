@@ -2,5 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--Replace this with configs-->
+    <bean id="dataSource" class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
+        <property name="user" value="root"/>
+        <property name="password" value="0000"/>
+        <property name="databaseName" value="road_to_b_dev"/>
+    </bean>
 
 </beans>
